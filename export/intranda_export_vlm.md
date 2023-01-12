@@ -75,6 +75,26 @@ The plugin is configured via the configuration file `plugin_intranda_export_vlm.
 		<!-- The prefix you would like to use for subfolders for different volumes. -->
 		<!-- Leave it blank if no common prefix is needed. -->
 		<subfolderPrefix>T_34_L_</subfolderPrefix>
+		
+		<!-- Whether or not use SFTP for the export. -->
+		<!-- If true then use SFTP. If false then perform local export. -->
+		<!-- If left blank, then the default setting 'false' will be used. -->
+		<sftp>true</sftp>
+		
+		<!-- Absolute path to the location of the file 'known_hosts'. -->
+		<!-- If left blank, then the default setting '{user.home}/.ssh/known_hosts' will be used. -->
+		<knownHosts></knownHosts>
+		
+		<!-- User name at the remote host. -->
+		<!-- MANDATORY if sftp is set to be true. -->
+		<username>CHANGE_ME</username>
+		
+		<!-- Name of the remote host. -->
+		<!-- MANDATORY if sftp is set to be true. -->
+		<hostname>CHANGE_ME</hostname>
+		
+		<!-- Password to log into the remote host 'username'@'hostname'. -->
+		<password>CHANGE_ME</password>
 	</config>
 	
 	<config>
@@ -86,6 +106,14 @@ The plugin is configured via the configuration file `plugin_intranda_export_vlm.
 		<path>{goobiFolder}../viewer/hotfolder/</path>
 		<!-- No common prefix needed. -->
 		<subfolderPrefix></subfolderPrefix>
+		
+		<sftp>false</sftp>
+		<!-- Use the default setting '{user.home}/.ssh/known_hosts'. -->
+		<knownHosts></knownHosts>
+		
+		<username></username>
+		<hostname></hostname>
+		<password></password>
 	</config>
 	
 	<config>
@@ -96,6 +124,15 @@ The plugin is configured via the configuration file `plugin_intranda_export_vlm.
 		<path>/opt/digiverso/viewer/hotfolder</path>
 		<!-- No common prefix needed. -->
 		<subfolderPrefix></subfolderPrefix>
+		
+		<!-- Use the default setting 'false'. -->
+		<sftp></sftp>
+		<!-- Use the default setting '{user.home}/.ssh/known_hosts'. -->
+		<knownHosts></knownHosts>
+		
+		<username></username>
+		<hostname></hostname>
+		<password></password>
 	</config>
 
 </config_plugin>
@@ -107,3 +144,8 @@ The plugin is configured via the configuration file `plugin_intranda_export_vlm.
 | `volume`          | This parameter controls with which metadata the subdirectories for volumes are to be named. |
 | `path`            | This parameter sets the export path where the data is to be exported. An absolute path is expected. |
 | `subfolderPrefix` | This parameter describes the prefix to be placed in front of each volume of a multi-volume work in the folder name. (Example `T_34_L_`: Here `T_34` stands for the recognition for the creation of a structure node of the type `volume` and the `L` indicates that a text comes after it.). |
+| `sftp`            | This parameter determines whether to use SFTP for the export process or not. |
+| `knownHosts`      | This parameter determines where the file `known_hosts` is. If left empty, then the default setting `{user.home}/.ssh/known_hosts` will be used. Otherwise, it is an absolute path expected here. |
+| `username`        | This parameter determines the user name to log into the remote host. |
+| `hostname`        | This parameter determines the name of the remote host or its IP address. |
+| `password`        | This parameter determines the password to be used to log into the remote host as `username`@`hostname`. |
